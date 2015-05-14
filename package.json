@@ -1,0 +1,20 @@
+{
+  "name": "Chatty",
+  "version": "1.0.0",
+  "description": "Real Time Chat App",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Scott Smith",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "*",
+    "body-parser": "*",
+    "express": "^4.12.3",
+    "jsonwebtoken": "*",
+    "mongoose": "*",
+    "morgan": "*",
+    "socket.io": "^1.3.5"
+  }
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Index Page</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    	<!--  Stylesheets -->
+<!--     	<link rel='stylesheet' href='css/style.css' type='text/css'> -->
+
+    	<!-- JavaScripts -->
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<h1>Node.js Project</h1>
+			</header>
+			<ul id="messages">
+				<form action="">
+					<input id="m" autocomplete="off">
+					<button>SEND</button>
+				</form>
+			</ul>
+		</div>
+		<footer>
+			<p>Copyright &copy; 2015, Virtual Business Systems, All Rights Reserved</p>
+		</footer>
+	  <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script> 
+	  <script src="http://code.jquery.com/jquery-1.11.1.js"></script> 
+	  <script src="/socket.io/socket.io.js" ></script> 
+	  <script> 
+		var socket = io(); 
+		$('form').submit(function(){ 
+		  socket.emit('chat message', $('#m').val() ); 
+		  $('#m').val(''); 
+		  return false; 
+		}); 
+		socket.on('chat message', function(msg){ 
+		  $("#messages").append($('<li>').text(msg)); 
+		}); 
+	  </script> 
+	</body>
+</html>
