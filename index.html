@@ -6,23 +6,22 @@
     	<meta name="viewport" content="width=device-width, initial-scale=1">
 
     	<!--  Stylesheets -->
-<!--     	<link rel='stylesheet' href='css/style.css' type='text/css'> -->
+    	<link rel='stylesheet' href='styles/style.css' type='text/css'>
 
     	<!-- JavaScripts -->
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	</head>
 	<body>
-		<div class="container">
+			<input type="text" id="username">
 			<header>
 				<h1>Node.js Project</h1>
 			</header>
 			<ul id="messages">
-				<form action="">
+				<form action="" id="frmMsg">
 					<input id="m" autocomplete="off">
-					<button>SEND</button>
+					<button>Send Message</button>
 				</form>
 			</ul>
-		</div>
 		<footer>
 			<p>Copyright &copy; 2015, Virtual Business Systems, All Rights Reserved</p>
 		</footer>
@@ -31,14 +30,17 @@
 	  <script src="/socket.io/socket.io.js" ></script> 
 	  <script> 
 		var socket = io(); 
-		$('form').submit(function(){ 
-		  socket.emit('chat message', $('#m').val() ); 
+		$('#frmMsg').submit(function(){ 
+			uName = $('#username').val();
+			ichat = $('#m').val();
+		  socket.emit('chat message', uName+' '+ichat  ); 
+		  console.log(uName+' '+ichat);
 		  $('#m').val(''); 
 		  return false; 
 		}); 
 		socket.on('chat message', function(msg){ 
 		  $("#messages").append($('<li>').text(msg)); 
-		}); 
+		}); 		
 	  </script> 
 	</body>
 </html>
